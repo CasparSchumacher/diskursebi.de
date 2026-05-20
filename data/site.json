@@ -1,0 +1,70 @@
+{
+  "sources": [
+    {
+      "title": "Der Begriff der narrativen Hegemonie",
+      "type": "Bachelorarbeit",
+      "topic": "Narrative Hegemonie",
+      "format": "Forschung",
+      "description": "Meine veröffentlichte Bachelorarbeit an der LMU München. Darin geht es um narrative Hegemonie und politische Deutung.",
+      "url": "https://epub.ub.uni-muenchen.de/135673/"
+    },
+    {
+      "title": "Bachelorarbeit als PDF",
+      "type": "PDF",
+      "topic": "Narrative Hegemonie",
+      "format": "Dokument",
+      "description": "Die Arbeit gibt es hier auch direkt als PDF zum Lesen und Nachschlagen.",
+      "url": "assets/bachelorarbeit-huber.pdf"
+    },
+    {
+      "title": "Instagram: Diskursebi",
+      "type": "Kanal",
+      "topic": "Social Media",
+      "format": "Instagram",
+      "description": "Auf Instagram teile ich Kurzformate, Einordnungen und Gedanken zu aktuellen Debatten.",
+      "url": "https://www.instagram.com/diskursebi?igsh=MTgxeDhvOTFmejhmdg%3D%3D&utm_source=qr"
+    },
+    {
+      "title": "TikTok: @diskursebi",
+      "type": "Kanal",
+      "topic": "Social Media",
+      "format": "TikTok",
+      "description": "Auf TikTok geht es um politische Themen im schnellen Videoformat, möglichst verständlich und niedrigschwellig.",
+      "url": "https://www.tiktok.com/@diskursebi?_r=1&_t=ZG-96VtGh1osAz"
+    },
+    {
+      "title": "M94.5",
+      "type": "Hintergrund",
+      "topic": "Journalismus",
+      "format": "Ausbildung",
+      "description": "Bei M94.5 habe ich journalistische Grundlagen gelernt und viel über verständliches Erzählen mitgenommen.",
+      "url": "https://www.m945.de/"
+    }
+  ],
+  "featuredPosts": [
+    {
+      "title": "Diskursanalyse im Reel-Format",
+      "platform": "Instagram",
+      "url": "https://www.instagram.com/diskursebi?igsh=MTgxeDhvOTFmejhmdg%3D%3D&utm_source=qr",
+      "accent": "linear-gradient(135deg, rgba(213,63,79,.88), rgba(126,167,255,.6))"
+    },
+    {
+      "title": "Kurze politische Einordnung",
+      "platform": "TikTok",
+      "url": "https://www.tiktok.com/@diskursebi?_r=1&_t=ZG-96VtGh1osAz",
+      "accent": "linear-gradient(135deg, rgba(92,224,196,.72), rgba(159,38,57,.78))"
+    },
+    {
+      "title": "Quellen und Kontext",
+      "platform": "Recherche",
+      "url": "#quellen",
+      "accent": "linear-gradient(135deg, rgba(246,239,224,.55), rgba(213,63,79,.72))"
+    },
+    {
+      "title": "Was bedeutet narrative Hegemonie?",
+      "platform": "Essay",
+      "url": "https://epub.ub.uni-muenchen.de/135673/",
+      "accent": "linear-gradient(135deg, rgba(126,167,255,.7), rgba(16,17,38,.9))"
+    }
+  ]
+}

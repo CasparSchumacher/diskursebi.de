@@ -1,0 +1,46 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+collections:
+  - name: "posts"
+    label: "Blog-Beiträge"
+    folder: "content/posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Titel", name: "title", widget: "string" }
+      - { label: "Datum", name: "date", widget: "datetime", format: "YYYY-MM-DD" }
+      - { label: "Kategorie", name: "category", widget: "string", default: "Diskurs" }
+      - { label: "Text", name: "body", widget: "markdown" }
+
+  - name: "homepage"
+    label: "Startseite"
+    files:
+      - label: "Quellen und Formate"
+        name: "site"
+        file: "data/site.json"
+        fields:
+          - label: "Quellen"
+            name: "sources"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Titel", name: "title", widget: "string" }
+              - { label: "Typ", name: "type", widget: "string" }
+              - { label: "Thema", name: "topic", widget: "string" }
+              - { label: "Format", name: "format", widget: "string" }
+              - { label: "Beschreibung", name: "description", widget: "text" }
+              - { label: "URL", name: "url", widget: "string" }
+          - label: "Aktuelle Formate"
+            name: "featuredPosts"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Titel", name: "title", widget: "string" }
+              - { label: "Plattform", name: "platform", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+              - { label: "Farbverlauf", name: "accent", widget: "string" }
