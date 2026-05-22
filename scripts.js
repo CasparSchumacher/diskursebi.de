@@ -54,6 +54,19 @@ const fallbackFeatured = [
 const $ = (selector, root = document) => root.querySelector(selector);
 let renderedPosts = [];
 
+function escapeHtml(value = "") {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+function cssUrl(value = "") {
+  return String(value).replace(/["'\\\n\r]/g, "");
+}
+
 function setHeaderState() {
   $("[data-header]")?.classList.toggle("is-scrolled", window.scrollY > 16);
 }
@@ -138,13 +151,22 @@ function renderFeatured(items) {
   root.innerHTML = doubled
     .map(
       (item) => `
-        <a class="motion-card" style="--card-bg: ${item.accent}" href="${item.url}" target="${item.url.startsWith("#") ? "_self" : "_blank"}" rel="noreferrer">
-          <span>${item.platform}</span>
-          <strong>${item.title}</strong>
+        <a class="motion-card" style="${item.image ? `--card-image: url('${cssUrl(item.image)}');` : ""} --card-bg: ${item.accent || "linear-gradient(135deg, rgba(213,63,79,.88), rgba(126,167,255,.6))"}" href="${escapeHtml(item.url)}" target="${item.url.startsWith("#") ? "_self" : "_blank"}" rel="noreferrer">
+          <span>${escapeHtml(item.platform)}</span>
+          <strong>${escapeHtml(item.title)}</strong>
+          ${item.caption ? `<small>${escapeHtml(item.caption)}</small>` : ""}
         </a>
       `
     )
     .join("");
+}
+
+async function getInstagramFeed() {
+  const liveFeed = await getJson("/.netlify/functions/instagram-feed", { items: [] });
+  if (liveFeed.items?.length) return liveFeed.items;
+
+  const staticFeed = await getJson("data/instagram.json", { items: [] });
+  return staticFeed.items || [];
 }
 
 function parseFrontMatter(markdown) {
@@ -256,9 +278,10 @@ async function initContent() {
     sources: fallbackSources,
     featuredPosts: fallbackFeatured
   });
+  const instagramItems = await getInstagramFeed();
 
   renderSources(data.sources || fallbackSources);
-  renderFeatured(data.featuredPosts || fallbackFeatured);
+  renderFeatured(instagramItems.length ? instagramItems : data.featuredPosts || fallbackFeatured);
   renderPosts();
 }
 

@@ -5,6 +5,8 @@ const root = __dirname;
 const dist = path.join(root, "dist");
 const postsDir = path.join(root, "content", "posts");
 const manifestPath = path.join(root, "data", "posts.json");
+const instagramPath = path.join(root, "data", "instagram.json");
+const { fetchInstagramReels } = require("./lib/instagram");
 
 const copyTargets = [
   "index.html",
@@ -35,6 +37,24 @@ function writePostManifest() {
   fs.writeFileSync(manifestPath, `${JSON.stringify({ posts }, null, 2)}\n`);
 }
 
+async function writeInstagramFallback() {
+  ensureDir(path.dirname(instagramPath));
+
+  try {
+    const feed = await fetchInstagramReels({ limit: 6 });
+    fs.writeFileSync(instagramPath, `${JSON.stringify(feed, null, 2)}\n`);
+  } catch (error) {
+    const fallback = {
+      items: [],
+      updatedAt: new Date().toISOString(),
+      source: "instagram-build-error",
+      message: error.message
+    };
+    fs.writeFileSync(instagramPath, `${JSON.stringify(fallback, null, 2)}\n`);
+    console.warn(`Instagram fallback could not be refreshed: ${error.message}`);
+  }
+}
+
 function copyTarget(target) {
   const from = path.join(root, target);
   const to = path.join(dist, target);
@@ -42,11 +62,15 @@ function copyTarget(target) {
   fs.cpSync(from, to, { recursive: true });
 }
 
-function build() {
+async function build() {
   writePostManifest();
+  await writeInstagramFallback();
   fs.rmSync(dist, { recursive: true, force: true });
   ensureDir(dist);
   copyTargets.forEach(copyTarget);
 }
 
-build();
+build().catch((error) => {
+  console.error(error);
+  process.exit(1);
+});
