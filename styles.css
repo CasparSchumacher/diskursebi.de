@@ -116,7 +116,7 @@ nav a:focus-visible {
 }
 
 .hero {
-  min-height: 94vh;
+  min-height: clamp(620px, 84vh, 820px);
   display: grid;
   align-items: end;
   padding-top: 7rem;
@@ -298,65 +298,6 @@ h3 {
   border-radius: 50%;
   box-shadow: var(--shadow);
   border: 1px solid rgba(255, 248, 236, 0.2);
-}
-
-.signal-card {
-  position: absolute;
-  max-width: 16rem;
-  border: 1px solid rgba(255, 248, 236, 0.16);
-  border-radius: 8px;
-  padding: 0.85rem 1rem;
-  background: rgba(16, 17, 38, 0.78);
-  backdrop-filter: blur(18px);
-  box-shadow: var(--shadow);
-}
-
-.signal-card span {
-  display: block;
-  color: var(--blue);
-  font-size: 0.72rem;
-  font-weight: 800;
-  text-transform: uppercase;
-}
-
-.signal-card strong {
-  display: block;
-  margin-top: 0.15rem;
-}
-
-.signal-card.top {
-  top: 8%;
-  left: -10%;
-}
-
-.signal-card.bottom {
-  right: -8%;
-  bottom: 10%;
-}
-
-.ticker {
-  width: calc(100% + 6rem);
-  margin: clamp(3rem, 7vw, 5rem) -3rem 0;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  overflow: hidden;
-  transform: rotate(-1.3deg);
-}
-
-.ticker-track {
-  width: max-content;
-  display: flex;
-  gap: 2rem;
-  padding: 1rem 0;
-  color: rgba(255, 248, 236, 0.9);
-  font-size: clamp(1.15rem, 3vw, 2.2rem);
-  font-weight: 900;
-  text-transform: uppercase;
-  animation: marquee 28s linear infinite;
-}
-
-.ticker span {
-  display: block;
 }
 
 .split {
@@ -714,12 +655,6 @@ h3 {
   }
 }
 
-@keyframes marquee {
-  to {
-    transform: translateX(-50%);
-  }
-}
-
 @keyframes rail {
   to {
     transform: translateX(calc(-50% - 0.5rem));
@@ -760,10 +695,6 @@ h3 {
 
   .logo-orbit {
     width: min(82vw, 360px);
-  }
-
-  .signal-card {
-    display: none;
   }
 
   .source-grid,
