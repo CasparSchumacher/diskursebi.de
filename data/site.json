@@ -39,6 +39,14 @@
       "format": "Ausbildung",
       "description": "Bei M94.5 habe ich journalistische Grundlagen gelernt und viel über verständliches Erzählen mitgenommen.",
       "url": "https://www.m945.de/"
+    },
+    {
+      "title": "Vortrag von Rainer Mühlhoff",
+      "topic": "Videoreihe: KI & Techbranche - Wird die Demokratie zerstört",
+      "type": "Video",
+      "description": "Der Vortrag von Rainer Mühlhoff auf der re:publica 2026 zum Thema: KI und der neue Faschismus",
+      "url": "https://www.youtube.com/watch?v=UQ7Nywt_NnU&t=1011s",
+      "format": "Recherche"
     }
   ],
   "featuredPosts": [
