@@ -45,24 +45,32 @@
     {
       "title": "Diskursanalyse im Reel-Format",
       "platform": "Instagram",
+      "description": "Ein kurzer Einstieg in aktuelle politische Deutungen und Debatten.",
+      "image": "",
       "url": "https://www.instagram.com/diskursebi?igsh=MTgxeDhvOTFmejhmdg%3D%3D&utm_source=qr",
       "accent": "linear-gradient(135deg, rgba(213,63,79,.88), rgba(126,167,255,.6))"
     },
     {
       "title": "Kurze politische Einordnung",
       "platform": "TikTok",
+      "description": "Politische Themen im schnellen Videoformat, verständlich und niedrigschwellig.",
+      "image": "",
       "url": "https://www.tiktok.com/@diskursebi?_r=1&_t=ZG-96VtGh1osAz",
       "accent": "linear-gradient(135deg, rgba(92,224,196,.72), rgba(159,38,57,.78))"
     },
     {
       "title": "Quellen und Kontext",
       "platform": "Recherche",
+      "description": "Materialien und Hintergründe, die meine Inhalte nachvollziehbar machen.",
+      "image": "",
       "url": "#quellen",
       "accent": "linear-gradient(135deg, rgba(246,239,224,.55), rgba(213,63,79,.72))"
     },
     {
       "title": "Was bedeutet narrative Hegemonie?",
       "platform": "Essay",
+      "description": "Ein wissenschaftlicher Begriff, der hilft, politische Deutung besser zu verstehen.",
+      "image": "",
       "url": "https://epub.ub.uni-muenchen.de/135673/",
       "accent": "linear-gradient(135deg, rgba(126,167,255,.7), rgba(16,17,38,.9))"
     }

@@ -34,18 +34,24 @@ const fallbackFeatured = [
   {
     title: "Diskursanalyse im Reel-Format",
     platform: "Instagram",
+    description: "Ein kurzer Einstieg in aktuelle politische Deutungen und Debatten.",
+    image: "",
     url: "https://www.instagram.com/diskursebi?igsh=MTgxeDhvOTFmejhmdg%3D%3D&utm_source=qr",
     accent: "linear-gradient(135deg, rgba(213,63,79,.88), rgba(126,167,255,.6))"
   },
   {
     title: "Kurze politische Einordnung",
     platform: "TikTok",
+    description: "Politische Themen im schnellen Videoformat, verständlich und niedrigschwellig.",
+    image: "",
     url: "https://www.tiktok.com/@diskursebi?_r=1&_t=ZG-96VtGh1osAz",
     accent: "linear-gradient(135deg, rgba(92,224,196,.72), rgba(159,38,57,.78))"
   },
   {
     title: "Quellen und Kontext",
     platform: "Recherche",
+    description: "Materialien und Hintergründe, die meine Inhalte nachvollziehbar machen.",
+    image: "",
     url: "#quellen",
     accent: "linear-gradient(135deg, rgba(246,239,224,.55), rgba(213,63,79,.72))"
   }
@@ -61,6 +67,12 @@ function escapeHtml(value = "") {
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#039;");
+}
+
+function cssImageVariable(value = "") {
+  const image = String(value).trim();
+  if (!image || /["'()\\\n\r]/.test(image)) return "";
+  return `--card-image: url("${escapeHtml(image)}");`;
 }
 
 function setHeaderState() {
@@ -145,24 +157,17 @@ function renderFeatured(items) {
   if (!root) return;
   const doubled = [...items, ...items];
   root.innerHTML = doubled
-    .map(
-      (item) => `
-        <a class="motion-card" style="--card-bg: ${item.accent || "linear-gradient(135deg, rgba(213,63,79,.88), rgba(126,167,255,.6))"}" href="${escapeHtml(item.url)}" target="${item.url.startsWith("#") ? "_self" : "_blank"}" rel="noreferrer">
+    .map((item) => {
+      const url = item.url || "#";
+      return `
+        <a class="motion-card" style="${cssImageVariable(item.image)} --card-bg: ${item.accent || "linear-gradient(135deg, rgba(213,63,79,.88), rgba(126,167,255,.6))"}" href="${escapeHtml(url)}" target="${url.startsWith("#") ? "_self" : "_blank"}" rel="noreferrer">
           <span>${escapeHtml(item.platform)}</span>
           <strong>${escapeHtml(item.title)}</strong>
-          ${item.caption ? `<small>${escapeHtml(item.caption)}</small>` : ""}
+          ${item.description ? `<small>${escapeHtml(item.description)}</small>` : ""}
         </a>
-      `
-    )
+      `;
+    })
     .join("");
-}
-
-async function getInstagramFeed() {
-  const liveFeed = await getJson("/.netlify/functions/instagram-feed", { items: [] });
-  if (liveFeed.items?.length) return liveFeed.items;
-
-  const staticFeed = await getJson("data/instagram.json", { items: [] });
-  return staticFeed.items || [];
 }
 
 function parseFrontMatter(markdown) {
@@ -282,10 +287,7 @@ async function initContent() {
 
     if (needsSources) renderSources(data.sources || fallbackSources);
 
-    if (needsFeatured) {
-      const instagramItems = await getInstagramFeed();
-      renderFeatured(instagramItems.length ? instagramItems : data.featuredPosts || fallbackFeatured);
-    }
+    if (needsFeatured) renderFeatured(data.featuredPosts || fallbackFeatured);
   }
 
   if (needsPosts) renderPosts();
