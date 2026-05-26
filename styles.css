@@ -536,7 +536,6 @@ h3 {
   inset: 0;
   background:
     linear-gradient(180deg, transparent 20%, rgba(16, 17, 38, 0.9) 88%),
-    var(--card-image, none),
     var(--card-bg, linear-gradient(135deg, rgba(213, 63, 79, 0.8), rgba(126, 167, 255, 0.55)));
   background-size: cover;
   background-position: center;
@@ -603,6 +602,58 @@ h3 {
 
 .site-footer a {
   text-decoration: none;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.legal-page {
+  padding: 8rem clamp(1rem, 4vw, 3rem) 4rem;
+}
+
+.legal-content {
+  max-width: 860px;
+  margin: 0 auto;
+  color: rgba(255, 248, 236, 0.82);
+}
+
+.legal-content h1 {
+  margin-bottom: 2rem;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  font-size: clamp(2.6rem, 6vw, 4.6rem);
+  text-transform: none;
+}
+
+.legal-content h2 {
+  margin: 2.5rem 0 0.8rem;
+  font-size: clamp(1.35rem, 3vw, 2rem);
+  line-height: 1.1;
+}
+
+.legal-content p {
+  max-width: 760px;
+}
+
+.legal-content a {
+  color: var(--mint);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.legal-content code {
+  border: 1px solid rgba(255, 248, 236, 0.14);
+  border-radius: 6px;
+  padding: 0.1rem 0.35rem;
+  background: rgba(255, 248, 236, 0.07);
+  color: var(--paper);
+}
+
+.legal-updated {
+  color: var(--muted);
 }
 
 .post-dialog {

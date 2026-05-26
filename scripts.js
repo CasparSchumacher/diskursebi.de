@@ -16,7 +16,7 @@ const fallbackSources = [
     topic: "Social Media",
     format: "Instagram",
     description:
-      "Aktuelle Kurzformate, Einordnungen und Debattenimpulse auf Instagram.",
+      "Auf Instagram teile ich Kurzformate, Einordnungen und Gedanken zu aktuellen Debatten.",
     url: "https://www.instagram.com/diskursebi?igsh=MTgxeDhvOTFmejhmdg%3D%3D&utm_source=qr"
   },
   {
@@ -25,7 +25,7 @@ const fallbackSources = [
     topic: "Social Media",
     format: "TikTok",
     description:
-      "Politische Aufklärung im vertikalen Videoformat mit Fokus auf schnelle Verständlichkeit.",
+      "Auf TikTok geht es um politische Themen im schnellen Videoformat, möglichst verständlich und niedrigschwellig.",
     url: "https://www.tiktok.com/@diskursebi?_r=1&_t=ZG-96VtGh1osAz"
   }
 ];
@@ -61,10 +61,6 @@ function escapeHtml(value = "") {
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#039;");
-}
-
-function cssUrl(value = "") {
-  return String(value).replace(/["'\\\n\r]/g, "");
 }
 
 function setHeaderState() {
@@ -151,7 +147,7 @@ function renderFeatured(items) {
   root.innerHTML = doubled
     .map(
       (item) => `
-        <a class="motion-card" style="${item.image ? `--card-image: url('${cssUrl(item.image)}');` : ""} --card-bg: ${item.accent || "linear-gradient(135deg, rgba(213,63,79,.88), rgba(126,167,255,.6))"}" href="${escapeHtml(item.url)}" target="${item.url.startsWith("#") ? "_self" : "_blank"}" rel="noreferrer">
+        <a class="motion-card" style="--card-bg: ${item.accent || "linear-gradient(135deg, rgba(213,63,79,.88), rgba(126,167,255,.6))"}" href="${escapeHtml(item.url)}" target="${item.url.startsWith("#") ? "_self" : "_blank"}" rel="noreferrer">
           <span>${escapeHtml(item.platform)}</span>
           <strong>${escapeHtml(item.title)}</strong>
           ${item.caption ? `<small>${escapeHtml(item.caption)}</small>` : ""}
@@ -274,15 +270,25 @@ async function renderPosts() {
 }
 
 async function initContent() {
-  const data = await getJson("data/site.json", {
-    sources: fallbackSources,
-    featuredPosts: fallbackFeatured
-  });
-  const instagramItems = await getInstagramFeed();
+  const needsSources = Boolean($("[data-sources]") && $("[data-source-filters]"));
+  const needsFeatured = Boolean($("[data-featured-posts]"));
+  const needsPosts = Boolean($("[data-posts]"));
 
-  renderSources(data.sources || fallbackSources);
-  renderFeatured(instagramItems.length ? instagramItems : data.featuredPosts || fallbackFeatured);
-  renderPosts();
+  if (needsSources || needsFeatured) {
+    const data = await getJson("data/site.json", {
+      sources: fallbackSources,
+      featuredPosts: fallbackFeatured
+    });
+
+    if (needsSources) renderSources(data.sources || fallbackSources);
+
+    if (needsFeatured) {
+      const instagramItems = await getInstagramFeed();
+      renderFeatured(instagramItems.length ? instagramItems : data.featuredPosts || fallbackFeatured);
+    }
+  }
+
+  if (needsPosts) renderPosts();
 }
 
 function initCopyEmail() {

@@ -10,6 +10,8 @@ const { fetchInstagramReels } = require("./lib/instagram");
 
 const copyTargets = [
   "index.html",
+  "impressum.html",
+  "datenschutz.html",
   "styles.css",
   "scripts.js",
   "_headers",
