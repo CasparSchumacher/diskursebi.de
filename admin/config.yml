@@ -7,18 +7,38 @@ public_folder: "/assets/uploads"
 
 collections:
   - name: "posts"
-    label: "Blog-Beiträge"
+    label: "Blog / längere Texte"
+    label_singular: "Blogbeitrag"
+    description: "Hier entstehen längere Texte, Notizen und Hintergründe. Jeder Eintrag erscheint im Bereich Notizen & Blog."
     folder: "content/posts"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
-      - { label: "Titel", name: "title", widget: "string" }
-      - { label: "Datum", name: "date", widget: "datetime", format: "YYYY-MM-DD" }
-      - { label: "Kategorie", name: "category", widget: "string", default: "Diskurs" }
-      - { label: "Text", name: "body", widget: "markdown" }
+      - label: "Titel"
+        name: "title"
+        widget: "string"
+        hint: "Die Überschrift, die auf der Website angezeigt wird."
+      - label: "Datum"
+        name: "date"
+        widget: "datetime"
+        format: "YYYY-MM-DD"
+        date_format: "DD.MM.YYYY"
+        time_format: false
+        hint: "Das Veröffentlichungsdatum."
+      - label: "Kategorie"
+        name: "category"
+        widget: "select"
+        default: "Diskurs"
+        options: ["Diskurs", "Hintergrund", "Recherche", "Kommentar", "Notiz"]
+        hint: "Kurze Einordnung des Beitrags."
+      - label: "Text"
+        name: "body"
+        widget: "markdown"
+        hint: "Hier kommt der eigentliche Beitrag rein. Zwischenüberschriften und Links sind möglich."
 
   - name: "homepage"
     label: "Startseite"
+    description: "Hier werden Quellen und die manuell gepflegten Karten im Bereich Aktuelle Videos und Formate bearbeitet."
     files:
       - label: "Quellen und Formate"
         name: "site"
@@ -28,19 +48,54 @@ collections:
             name: "sources"
             widget: "list"
             summary: "{{fields.title}}"
+            hint: "Alles, was im Quellen-Board erscheinen soll: Studien, Artikel, PDFs, Kanäle oder andere Links."
             fields:
-              - { label: "Titel", name: "title", widget: "string" }
-              - { label: "Typ", name: "type", widget: "string" }
-              - { label: "Thema", name: "topic", widget: "string" }
-              - { label: "Format", name: "format", widget: "string" }
-              - { label: "Beschreibung", name: "description", widget: "text" }
-              - { label: "URL", name: "url", widget: "string" }
-          - label: "Aktuelle Formate"
+              - label: "Titel"
+                name: "title"
+                widget: "string"
+                hint: "Name der Quelle, z. B. Titel einer Studie oder Name eines Kanals."
+              - label: "Typ"
+                name: "type"
+                widget: "select"
+                options: ["Artikel", "Studie", "PDF", "Video", "Kanal", "Podcast", "Hintergrund", "Bachelorarbeit"]
+                hint: "Grober Quellentyp. Wird als kleines Label angezeigt."
+              - label: "Thema / Filter"
+                name: "topic"
+                widget: "string"
+                hint: "Darüber entstehen die Filter im Quellen-Board, z. B. Social Media oder Narrative Hegemonie."
+              - label: "Format"
+                name: "format"
+                widget: "select"
+                options: ["Forschung", "Dokument", "Instagram", "TikTok", "Artikel", "Video", "Ausbildung", "Recherche"]
+                hint: "Zweites kleines Label auf der Quellenkarte."
+              - label: "Beschreibung"
+                name: "description"
+                widget: "text"
+                hint: "Ein bis zwei kurze Sätze: Warum ist diese Quelle relevant?"
+              - label: "Link"
+                name: "url"
+                widget: "string"
+                hint: "Vollständige URL, inklusive https://"
+          - label: "Aktuelle Videos und Formate"
             name: "featuredPosts"
             widget: "list"
             summary: "{{fields.title}}"
+            hint: "Fallback-Karten, falls die automatische Instagram-Anbindung nicht aktiv ist oder für TikTok/Essays/andere Links."
             fields:
-              - { label: "Titel", name: "title", widget: "string" }
-              - { label: "Plattform", name: "platform", widget: "string" }
-              - { label: "URL", name: "url", widget: "string" }
-              - { label: "Farbverlauf", name: "accent", widget: "string" }
+              - label: "Titel"
+                name: "title"
+                widget: "string"
+                hint: "Kurze Überschrift der Karte."
+              - label: "Plattform / Format"
+                name: "platform"
+                widget: "select"
+                options: ["Instagram", "TikTok", "YouTube", "Essay", "Recherche", "Podcast"]
+                hint: "Wird als kleines Label oben auf der Karte angezeigt."
+              - label: "Link"
+                name: "url"
+                widget: "string"
+                hint: "Vollständige URL zum Beitrag, Reel, TikTok oder Essay."
+              - label: "Farbverlauf"
+                name: "accent"
+                widget: "hidden"
+                default: "linear-gradient(135deg, rgba(213,63,79,.88), rgba(126,167,255,.6))"
