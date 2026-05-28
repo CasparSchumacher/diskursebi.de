@@ -2,11 +2,19 @@
   "sources": [
     {
       "title": "Vortrag von Rainer Mühlhoff",
-      "topic": "Videoreihe: KI & Techbranche - Wird die Demokratie zerstört",
+      "topic": "Videoreihe: KI & Techbranche - Wird die Demokratie zerstört?",
       "type": "Video",
       "description": "Der Vortrag von Rainer Mühlhoff auf der re:publica 2026 zum Thema: KI und der neue Faschismus",
       "url": "https://www.youtube.com/watch?v=UQ7Nywt_NnU&t=1011s",
       "format": "Recherche"
+    },
+    {
+      "title": "The authortarian Stack ",
+      "type": "Studie",
+      "format": "Forschung",
+      "description": "Die Datenrecherche und Aufarbeitung von the authoritarian Stack ",
+      "url": "https://www.authoritarian-stack.info/",
+      "topic": "Videoreihe: KI & Techbranche - Wird die Demokratie zerstört?"
     }
   ],
   "featuredPosts": [
