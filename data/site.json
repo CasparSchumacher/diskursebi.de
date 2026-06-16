@@ -39,6 +39,22 @@
       "url": "https://www.youtube.com/watch?v=3cEFIiWeBvk&t=51s",
       "title": "Rasenfunk-Podcast: WM-Panel 2",
       "description": "Tolle journalistische Aufarbeitung der Themen rund um die erste Woche der WM 2026"
+    },
+    {
+      "title": "AL Jazeera: Israels expansion of military control",
+      "type": "Artikel",
+      "topic": "Video: US-Iran-Deal - Konsequenzen für Gaza und Libanon",
+      "format": "Recherche",
+      "description": "Aufarbeitung der völkerrechtswidrigen militärischen Handlungen Israels, inklusive Visualisierungen.",
+      "url": "https://www.aljazeera.com/news/2026/6/14/israel-expands-military-control-in-gaza-lebanon-and-syria-by-1000sq-km"
+    },
+    {
+      "type": "Kanal",
+      "topic": "Video: US-Iran-Deal - Konsequenzen für Gaza und Libanon",
+      "format": "Recherche",
+      "description": "Unabhängiges vertrauenswürdiges Nachrichtennetzwerk, insbesondere im Bezug auf Ereignisse im Nahen Osten.",
+      "url": "https://www.dropsitenews.com/",
+      "title": "Unabhängige Nachrichtenplattform: Drop Site News"
     }
   ],
   "featuredPosts": [
