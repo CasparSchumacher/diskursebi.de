@@ -15,6 +15,30 @@
       "description": "Die Datenrecherche und Aufarbeitung von The Authoritarian Stack ",
       "url": "https://www.authoritarian-stack.info/",
       "topic": "Videoreihe: KI & Techbranche - Wird die Demokratie zerstört?"
+    },
+    {
+      "title": "New York Times: The 2026 World Cup ticket saga",
+      "type": "Artikel",
+      "topic": "Videos: Politische Aufarbeitung zur WM 2026",
+      "format": "Recherche",
+      "description": "Ausführliche Aufarbeitung der NYT über die Ticketvergabe bei der WM 2026",
+      "url": "https://www.nytimes.com/athletic/7341387/2026/06/08/world-cup-2026-ticket-prices-saga-controversy/"
+    },
+    {
+      "topic": "Videos: Politische Aufarbeitung zur WM 2026",
+      "title": "Rasenfunk-Podcast: WM-Panel 1",
+      "type": "Podcast",
+      "format": "Recherche",
+      "description": "Tolle journalistische Aufarbeitung der politischen Themen im Vorfeld zur WM 2026",
+      "url": "https://www.youtube.com/watch?v=lTSjlBCmxBs&t=13s"
+    },
+    {
+      "topic": "Videos: Politische Aufarbeitung zur WM 2026",
+      "type": "Podcast",
+      "format": "Recherche",
+      "url": "https://www.youtube.com/watch?v=3cEFIiWeBvk&t=51s",
+      "title": "Rasenfunk-Podcast: WM-Panel 2",
+      "description": "Tolle journalistische Aufarbeitung der Themen rund um die erste Woche der WM 2026"
     }
   ],
   "featuredPosts": [
